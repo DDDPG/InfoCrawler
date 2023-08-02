@@ -1,0 +1,28 @@
+spring:
+  cache:
+    type: redis
+    cache-names: resultInfo,crawlerManagement
+    redis:
+      time-to-live: "10m"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.0.21:3306/webmagic
+    username: webmagic
+    password: Webmagic123!
+  data:
+    redis:
+      host: 192.168.0.21
+      port: 6389
+      database: 7
+
+
+  mail:
+    host: smtp.163.com
+    username: qidian_webcrawler@163.com
+    password: YMTEGGNPIRROGPQS
+
+mybatis-plus:
+  mapper-locations: classpath:/mappers/*Mapper.xml
+  type-aliases-package: com.crawlerdemo.webmagic.Entity
+  configuration:
+    cache-enabled: true

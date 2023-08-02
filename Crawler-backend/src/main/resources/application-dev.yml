@@ -1,0 +1,27 @@
+spring:
+  cache:
+    type: redis
+    cache-names: resultInfo,crawlerManagement
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/JDBC_TEST
+    username: root
+    password: Wangkangdi21
+  data:
+    redis:
+      host: 192.168.0.21
+      port: 6389
+      database: 7
+
+
+  mail:
+    host: smtp.163.com
+    username: qidian_webcrawler@163.com
+    password: YMTEGGNPIRROGPQS
+#    port: 465
+
+mybatis-plus:
+  mapper-locations: classpath:/mappers/*Mapper.xml
+  type-aliases-package: com.crawlerdemo.webmagic.Entity
+  configuration:
+    cache-enabled: true

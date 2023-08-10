@@ -1,10 +1,10 @@
 package com.crawlerdemo.webmagic.service;
 
 import com.crawlerdemo.mail.MailPool;
-import com.crawlerdemo.webmagic.Entity.CrawlerManagementEntity;
-import com.crawlerdemo.webmagic.Entity.MailUnitInfoEntity;
-import com.crawlerdemo.webmagic.Entity.ResultInfoEntity;
-import com.crawlerdemo.webmagic.mapper.ResultInfoMapper;
+import com.crawlerdemo.webmagic.Entity.crawler.CrawlerManagementEntity;
+import com.crawlerdemo.webmagic.Entity.crawler.MailUnitInfoEntity;
+import com.crawlerdemo.webmagic.Entity.crawler.ResultInfoEntity;
+import com.crawlerdemo.webmagic.mapper.crawlermapper.ResultInfoMapper;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import jakarta.annotation.Resource;
 import lombok.Data;

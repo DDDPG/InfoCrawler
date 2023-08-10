@@ -1,4 +1,4 @@
-package com.crawlerdemo.webmagic.model.ccgp_hubei;
+package com.crawlerdemo.webmagic.model.ccgp.hubei;
 
 import com.crawlerdemo.webmagic.model.InfoType;
 import com.crawlerdemo.webmagic.model.ResultInfoRepo;

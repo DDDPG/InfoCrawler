@@ -1,4 +1,4 @@
-package com.crawlerdemo.webmagic.Entity;
+package com.crawlerdemo.webmagic.Entity.crawler;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -35,6 +35,19 @@ public class ResultInfoEntity {
     @TableField("date")
     private String date;
 
+    public ResultInfoEntity() {
+    }
+
+    public ResultInfoEntity(int id, String sourceWebsite, String title, String url, String sourceUrl, String area, String date) {
+        this.id = id;
+        this.sourceWebsite = sourceWebsite;
+        this.title = title;
+        this.url = url;
+        this.sourceUrl = sourceUrl;
+        this.area = area;
+        this.date = date;
+    }
+
     public ResultInfoEntity(ResultInfoRepo resultInfoRepo) {
 //        this.id = resultInfoRepo.getId();
         this.sourceWebsite = resultInfoRepo.getSourceWebsite();
@@ -43,5 +56,14 @@ public class ResultInfoEntity {
         this.url = resultInfoRepo.getUrl();
         this.area = resultInfoRepo.getArea().isBlank() ? "未知" : resultInfoRepo.getArea();
         this.date = resultInfoRepo.getDate();
+    }
+
+    public ResultInfoEntity(String title, String sourceWebsite, String sourceUrl, String area, String date, String url) {
+        this.title = title;
+        this.sourceWebsite = sourceWebsite;
+        this.sourceUrl = sourceUrl;
+        this.area = area;
+        this.date = date;
+        this.url = url;
     }
 }

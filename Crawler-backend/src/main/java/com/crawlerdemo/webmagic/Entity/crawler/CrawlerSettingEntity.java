@@ -1,4 +1,4 @@
-package com.crawlerdemo.webmagic.Entity;
+package com.crawlerdemo.webmagic.Entity.crawler;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

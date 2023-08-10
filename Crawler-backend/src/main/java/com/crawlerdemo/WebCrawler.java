@@ -6,12 +6,14 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * <p> This class is the main class of the project, and it is used to start the crawler.
+ * <p> This class is the main class of the project, and it is used to start the crawlermapper.
  */
 @SpringBootApplication
-@MapperScan("com.crawlerdemo.webmagic.mapper")
+@MapperScan(basePackages = {"com.crawlerdemo.webmagic.mapper.securitymapper", "com.crawlerdemo.webmagic.mapper.crawlermapper"})
 //@EnableScheduling
 public class WebCrawler {
 
@@ -30,7 +32,8 @@ public class WebCrawler {
         ApplicationContext context = SpringApplication.run(WebCrawler.class, args);
         WebCrawler webCrawler = context.getBean(WebCrawler.class);
 //        webCrawler.crawlerManager.crawl("中国政府采购网_湖北省");
-        webCrawler.mailService.mail();
-
+//        webCrawler.mailService.mail();
+//        PasswordEncoder encoder = new BCryptPasswordEncoder();
+//        System.out.println(encoder.encode("123"));
     }
 }

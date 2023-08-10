@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Crawler-backend/Crawler-backend.iml" filepath="$PROJECT_DIR$/Crawler-backend/Crawler-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Crawler-frontend/Crawler-frontend.iml" filepath="$PROJECT_DIR$/Crawler-frontend/Crawler-frontend.iml" />
       <module fileurl="file://$PROJECT_DIR$/InfoCrawler.iml" filepath="$PROJECT_DIR$/InfoCrawler.iml" />
-      <module fileurl="file://$PROJECT_DIR$/crawler-frontend.iml" filepath="$PROJECT_DIR$/crawler-frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxl-job/xxl-job-admin/src/main/main3.iml" filepath="$PROJECT_DIR$/xxl-job/xxl-job-admin/src/main/main3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxl-job/xxl-job-admin/src/test/test3.iml" filepath="$PROJECT_DIR$/xxl-job/xxl-job-admin/src/test/test3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xxl-job/xxl-job-core/xxl-job-core.iml" filepath="$PROJECT_DIR$/xxl-job/xxl-job-core/xxl-job-core.iml" />
     </modules>
   </component>
 </project>

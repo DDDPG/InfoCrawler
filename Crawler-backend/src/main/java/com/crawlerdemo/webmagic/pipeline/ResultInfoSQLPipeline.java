@@ -1,17 +1,20 @@
 package com.crawlerdemo.webmagic.pipeline;
 
-import com.crawlerdemo.webmagic.Entity.CrawlerManagementEntity;
-import com.crawlerdemo.webmagic.Entity.ResultInfoEntity;
+import com.crawlerdemo.webmagic.Entity.crawler.CrawlerManagementEntity;
+import com.crawlerdemo.webmagic.Entity.crawler.ResultInfoEntity;
 import com.crawlerdemo.webmagic.config.CrawlerManagementConfig;
 import com.crawlerdemo.webmagic.model.ResultInfoPool;
 import com.crawlerdemo.webmagic.model.ResultInfoRepo;
 import com.crawlerdemo.webmagic.service.ResultSQLService;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.PageModelPipeline;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component("ResultInfoSQLPipeline")
 public class ResultInfoSQLPipeline implements PageModelPipeline<ResultInfoRepo> {
@@ -19,6 +22,8 @@ public class ResultInfoSQLPipeline implements PageModelPipeline<ResultInfoRepo> 
     private final CrawlerManagementConfig companyInfoFilterConfiguration;
     private final ResultSQLService resultSqlService;
     private final ResultInfoPool companyInfoPool;
+
+    private static final Logger logger = org.slf4j.LoggerFactory.getLogger(ResultInfoSQLPipeline.class);
 
     public ResultInfoSQLPipeline(CrawlerManagementConfig companyInfoFilterConfiguration, ResultSQLService resultSqlService, ResultInfoPool companyInfoPool) {
         this.companyInfoFilterConfiguration = companyInfoFilterConfiguration;
@@ -46,19 +51,24 @@ public class ResultInfoSQLPipeline implements PageModelPipeline<ResultInfoRepo> 
 
     private void processResultInfoRepoList(List<String> filterList) {
         List<ResultInfoRepo> infoRepoList = new ArrayList<>(companyInfoPool.getResultInfoRepoPool());
-        for (ResultInfoRepo infoRepo : infoRepoList) {
-            // 匹配过滤器，如果不匹配则跳过
-            if (infoRepo.ifMatchingFilter(filterList)) {
-                ResultInfoEntity resultInfoEntity = new ResultInfoEntity(infoRepo);
 
-                // 如果匹配，将其保存到 SQL 数据库
-                int returnValue = resultSqlService.saveToDatabase(resultInfoEntity);
+        if (infoRepoList.size() > 0) {
+            for (ResultInfoRepo infoRepo : infoRepoList) {
+                // 匹配过滤器，如果不匹配则跳过
+                if ((!ObjectUtils.isEmpty(infoRepo))&&infoRepo.ifMatchingFilter(filterList)) {
+                    ResultInfoEntity resultInfoEntity = new ResultInfoEntity(infoRepo);
 
-                // 如果 SQL 插入失败，抛出异常
-                if (returnValue == 0) {
-                    throw new RuntimeException("SQL insert failed: " + resultInfoEntity);
+                    // 如果匹配，将其保存到 SQL 数据库
+                    int returnValue = resultSqlService.saveToDatabase(resultInfoEntity);
+
+                    // 如果 SQL 插入失败，抛出异常
+                    if (returnValue == 0) {
+                        throw new RuntimeException("SQL insert failed: " + resultInfoEntity);
+                    }
                 }
             }
+        } else {
+            logger.info("No ResultInfoRepo in ResultInfoPool for this page.");
         }
     }
 

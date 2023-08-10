@@ -4,9 +4,12 @@ import com.crawlerdemo.schedule.ScheduledTasks;
 import com.crawlerdemo.webmagic.config.CrawlerManagementConfig;
 import com.crawlerdemo.webmagic.config.CrawlerSettingConfig;
 import com.crawlerdemo.webmagic.model.bibenet.BiBinetRepo;
-import com.crawlerdemo.webmagic.model.ccgp_hubei.HuBeiGovRepo;
+import com.crawlerdemo.webmagic.model.ccgp.hubei.HuBeiGovRepo;
 import com.crawlerdemo.webmagic.model.ggzy.gov.GlobalGovPageRepo;
+import com.crawlerdemo.webmagic.model.ggzy.nanning.NanNingGovRepo;
+import com.crawlerdemo.webmagic.model.ggzy.xinjiang.XinJiangGovRepo;
 import com.crawlerdemo.webmagic.model.zhiliaobiaoxun.ZhiLiaoRepo;
+import com.xxl.job.core.context.XxlJobHelper;
 import jakarta.annotation.PostConstruct;
 import lombok.Data;
 import org.slf4j.Logger;
@@ -20,7 +23,7 @@ import us.codecraft.webmagic.pipeline.PageModelPipeline;
 import java.util.Optional;
 
 /**
- * The manager class of each crawler, which is used to start the crawler.
+ * The manager class of each crawlermapper, which is used to start the crawlermapper.
  */
 @Data
 @Component
@@ -55,9 +58,11 @@ public class CrawlerManager {
         switch (keyword) {
             case "比比网" -> crawlBiBiData();
             case "中国政府采购网_湖北省" -> crawlHuBeiData();
-            case "政府采购网" -> crawlGovData();
+            case "政府采购网" -> crawlGlobalGovData();
             case "知了标讯" -> crawlZhiLiao();
-            default -> System.out.println("No such website name for crawler!");
+            case "南宁市公共资源交易网" -> crawlNanNing();
+            case "新疆公共资源交易网" -> crawlXinjiang();
+            default -> throw new IllegalStateException("没有相应网站的爬虫: " + keyword);
         }
     }
 
@@ -75,7 +80,7 @@ public class CrawlerManager {
                 .thread(threadNum).run();
     }
 
-    private void crawlGovData() {
+    private void crawlGlobalGovData() {
         OOSpider.create(globalSite
                         , companyInfoSQLPipeline, GlobalGovPageRepo.class)
                 .addUrl(GlobalGovPageRepo.startUrl)
@@ -90,15 +95,32 @@ public class CrawlerManager {
                 .thread(threadNum).run();
     }
 
-    public void startCrawler() {
-        logger.info("Crawling started!");
-
-        //According to the website name list in the configuration file, start the crawler.
-        for (String website: crawlerManagementConfig.getWebsiteNameList()) {
-            crawl(website);
-            logger.info("Crawling " + website + " finished!");
-        }
-
-        System.out.println("Crawling finished!");
+    public void crawlNanNing() {
+        OOSpider.create(globalSite
+                        , companyInfoSQLPipeline, NanNingGovRepo.class)
+                .addUrl(NanNingGovRepo.startUrl)
+                .thread(threadNum).run();
     }
+
+    public void crawlXinjiang() {
+        OOSpider.create(globalSite
+                        , companyInfoSQLPipeline, XinJiangGovRepo.class)
+                .addUrl(XinJiangGovRepo.startUrl)
+                .thread(threadNum).run();
+    }
+
+    public void startCrawler() throws Exception {
+            logger.warn("爬虫开始!");
+            XxlJobHelper.log("爬虫开始!");
+            //According to the website name list in the configuration file, start the crawlermapper.
+            for (String website: crawlerManagementConfig.getWebsiteNameList()) {
+                crawl(website);
+                logger.warn("爬虫: " + website + " 已完成!");
+                XxlJobHelper.log("爬虫: " + website + " 已完成!");
+            }
+
+            logger.warn("爬虫结束!");
+            XxlJobHelper.log("爬虫结束!");
+    }
+
 }

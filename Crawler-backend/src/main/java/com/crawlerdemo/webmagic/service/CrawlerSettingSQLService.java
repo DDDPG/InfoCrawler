@@ -1,7 +1,7 @@
 package com.crawlerdemo.webmagic.service;
 
-import com.crawlerdemo.webmagic.Entity.CrawlerSettingEntity;
-import com.crawlerdemo.webmagic.mapper.CrawlerSettingMapper;
+import com.crawlerdemo.webmagic.Entity.crawler.CrawlerSettingEntity;
+import com.crawlerdemo.webmagic.mapper.crawlermapper.CrawlerSettingMapper;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import jakarta.annotation.Resource;
 import lombok.Data;

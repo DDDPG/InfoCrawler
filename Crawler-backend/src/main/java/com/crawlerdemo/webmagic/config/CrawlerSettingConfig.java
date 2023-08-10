@@ -1,6 +1,6 @@
 package com.crawlerdemo.webmagic.config;
 
-import com.crawlerdemo.webmagic.Entity.CrawlerSettingEntity;
+import com.crawlerdemo.webmagic.Entity.crawler.CrawlerSettingEntity;
 import com.crawlerdemo.webmagic.service.CrawlerSettingSQLService;
 import jakarta.annotation.PostConstruct;
 import lombok.Data;
@@ -24,6 +24,6 @@ public class CrawlerSettingConfig {
     @PostConstruct
     public void init() {
         this.crawlerSettingEntity = this.crawlerSettingSQLService.getAllSettingsAsMap();
-        logger.warn("Current active crawler setting: " + this.crawlerSettingEntity.toString());
+        logger.warn("Current active crawlermapper setting: " + this.crawlerSettingEntity.toString());
     }
 }

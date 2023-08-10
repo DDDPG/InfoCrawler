@@ -10,3 +10,18 @@ spring:
     host: smtp.163.com
     username: qidian_webcrawler@163.com
     password: YMTEGGNPIRROGPQS
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+        socketFactory:
+          class: javax.net.ssl.SSLSocketFactory
+
+# jwt config
+token:
+  header: Authorization
+  secret: qidian_webcrawler
+  expireTime: 1800

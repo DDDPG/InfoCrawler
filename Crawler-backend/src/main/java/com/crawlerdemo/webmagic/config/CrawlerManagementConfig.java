@@ -1,6 +1,6 @@
 package com.crawlerdemo.webmagic.config;
 
-import com.crawlerdemo.webmagic.Entity.CrawlerManagementEntity;
+import com.crawlerdemo.webmagic.Entity.crawler.CrawlerManagementEntity;
 import com.crawlerdemo.webmagic.model.ResultInfoRepo;
 import com.crawlerdemo.webmagic.service.ManagementSQLService;
 import jakarta.annotation.PostConstruct;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This class is used to manage the crawler management entity from table "crawlermanagementmap".
+ * This class is used to manage the crawlermapper management entity from table "crawlermanagementmap".
  */
 @Data
 @Scope("singleton")

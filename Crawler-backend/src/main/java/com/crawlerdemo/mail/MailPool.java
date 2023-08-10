@@ -1,6 +1,6 @@
 package com.crawlerdemo.mail;
 
-import com.crawlerdemo.webmagic.Entity.MailUnitInfoEntity;
+import com.crawlerdemo.webmagic.Entity.crawler.MailUnitInfoEntity;
 import jakarta.activation.DataSource;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;

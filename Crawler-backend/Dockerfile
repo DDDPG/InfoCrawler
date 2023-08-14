@@ -14,4 +14,4 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 EXPOSE 8080
 EXPOSE 9998
 
-ENTRYPOINT ["java","-jar","/app.jar $PARAMS"]
+ENTRYPOINT ["sh","-c","java","-jar","/app.jar $PARAMS"]

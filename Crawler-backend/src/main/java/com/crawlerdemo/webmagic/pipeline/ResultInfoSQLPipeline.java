@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The class to process Extracted information by webmagic framework and save it to SQL database.
+ */
 @Component("ResultInfoSQLPipeline")
 public class ResultInfoSQLPipeline implements PageModelPipeline<ResultInfoRepo> {
 

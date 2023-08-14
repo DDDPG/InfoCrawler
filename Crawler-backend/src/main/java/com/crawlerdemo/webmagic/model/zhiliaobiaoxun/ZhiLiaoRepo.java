@@ -23,8 +23,6 @@ public class ZhiLiaoRepo extends ResultInfoRepo<ZhiLiaoRepo> implements AfterExt
 
     private Integer id;
 
-    private InfoType type = InfoType.SINGLE;
-
     private String sourceWebsite = "知了标讯";
 
     @ExtractBy("h2/a/text()")

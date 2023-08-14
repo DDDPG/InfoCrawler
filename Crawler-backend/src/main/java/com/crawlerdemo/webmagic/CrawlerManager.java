@@ -1,6 +1,5 @@
 package com.crawlerdemo.webmagic;
 
-import com.crawlerdemo.schedule.ScheduledTasks;
 import com.crawlerdemo.webmagic.config.CrawlerManagementConfig;
 import com.crawlerdemo.webmagic.config.CrawlerSettingConfig;
 import com.crawlerdemo.webmagic.model.bibenet.BiBinetRepo;
@@ -10,9 +9,11 @@ import com.crawlerdemo.webmagic.model.ggzy.nanning.NanNingGovRepo;
 import com.crawlerdemo.webmagic.model.ggzy.xinjiang.XinJiangGovRepo;
 import com.crawlerdemo.webmagic.model.zhiliaobiaoxun.ZhiLiaoRepo;
 import com.xxl.job.core.context.XxlJobHelper;
+import groovy.util.logging.Slf4j;
 import jakarta.annotation.PostConstruct;
 import lombok.Data;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -39,8 +40,7 @@ public class CrawlerManager {
     @Autowired
     private CrawlerSettingConfig crawlerSettingConfig;
 
-    private static final Logger logger = org.slf4j.LoggerFactory.getLogger(ScheduledTasks.class);
-
+    private static final Logger logger = LoggerFactory.getLogger(CrawlerManager.class);
     private Site globalSite;
 
     private int threadNum;

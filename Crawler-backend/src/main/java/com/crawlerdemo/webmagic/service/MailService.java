@@ -1,6 +1,6 @@
 package com.crawlerdemo.webmagic.service;
 
-import com.crawlerdemo.mail.MailPool;
+import com.crawlerdemo.webmagic.mail.MailPool;
 import com.crawlerdemo.webmagic.Entity.crawler.CrawlerManagementEntity;
 import com.crawlerdemo.webmagic.Entity.crawler.MailUnitInfoEntity;
 import com.crawlerdemo.webmagic.Entity.crawler.ResultInfoEntity;

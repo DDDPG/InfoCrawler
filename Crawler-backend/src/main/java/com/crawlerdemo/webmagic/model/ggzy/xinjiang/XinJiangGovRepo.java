@@ -12,6 +12,7 @@ import us.codecraft.webmagic.model.ConsolePageModelPipeline;
 import us.codecraft.webmagic.model.OOSpider;
 import us.codecraft.webmagic.model.annotation.ExtractBy;
 import us.codecraft.webmagic.model.annotation.ExtractByUrl;
+import us.codecraft.webmagic.model.annotation.HelpUrl;
 import us.codecraft.webmagic.model.annotation.TargetUrl;
 
 import java.util.ArrayList;
@@ -19,13 +20,12 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
+@HelpUrl(value = "https://ggzy.xinjiang.gov.cn/xinjiangggzy/\\w+/[0-9]+/[0-9]+.html")
 @ExtractBy(value = "//*[@id=\"main\"]/tr", multi = true)
 public class XinJiangGovRepo extends ResultInfoRepo<XinJiangGovRepo> implements AfterExtractor {
     public static String startUrl = "https://ggzy.xinjiang.gov.cn/xinjiangggzy/xxzx/011001/information.html";
 
     private Integer id;
-
-    private InfoType type = InfoType.SINGLE;
 
     private String sourceWebsite = "新疆公共资源交易网";
 

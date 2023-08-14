@@ -18,8 +18,6 @@ public class GlobalGovRepo extends ResultInfoRepo<GlobalGovRepo> {
 
     private Integer id;
 
-    private InfoType type = InfoType.SINGLE;
-
     private String sourceWebsite = "全国政府采购网";
 
     private String title;

@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.Serializable;
 
+/**
+ * This class is used to handle the login request.
+ */
 @RestController
 @RequestMapping("/api/v1")
 public class AuthController {
@@ -76,6 +79,7 @@ public class AuthController {
         if (!authService.authenticate(username, password)) {
             return -2;
         }
+        //TODO: default code, not implement yet
         if (!code.equals("qidian")) {
             return -3;
         }

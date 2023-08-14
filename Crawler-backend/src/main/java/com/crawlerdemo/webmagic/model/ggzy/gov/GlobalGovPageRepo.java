@@ -48,7 +48,6 @@ public class GlobalGovPageRepo extends ResultInfoRepo<GlobalGovRepo> implements 
                 "&FINDTXT=";
     }
 
-    private InfoType type = InfoType.MULTI;
 
     //List of single type info objects
     private List<GlobalGovRepo> globalGovRepoList = new ArrayList<>();

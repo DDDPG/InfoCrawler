@@ -61,7 +61,7 @@ public class InfoTableOperationController {
      * @return NormalSQLResponse: 删除结果信息表的响应体
      */
     @DeleteMapping("/{id}")
-    public NormalSQLResponse deleteResultInfoTable(@RequestParam(value = "id") Integer id) {
+    public NormalSQLResponse deleteResultInfoTable(@PathVariable Integer id) {
         int result = resultSQLService.deleteResultInfoTable(id);
         NormalSQLResponse normalSQLResponse = new NormalSQLResponse();
         if (result == 1) {

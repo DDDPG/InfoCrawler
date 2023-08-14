@@ -1,4 +1,4 @@
-package com.crawlerdemo.mail;
+package com.crawlerdemo.webmagic.mail;
 
 import com.crawlerdemo.webmagic.Entity.crawler.MailUnitInfoEntity;
 import jakarta.activation.DataSource;

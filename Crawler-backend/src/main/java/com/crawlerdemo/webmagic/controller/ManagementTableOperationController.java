@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * This class is used to operate the management information table from `managementtable` in vue view and `CrawlerManagement` in database.
+ */
 @RestController
 @RequestMapping("/api/v1/crawlerManagementTable")
 public class ManagementTableOperationController {
@@ -54,7 +57,7 @@ public class ManagementTableOperationController {
      * @param id: 要删除的管理信息表的id
      */
     @DeleteMapping("/{id}")
-    public NormalSQLResponse deleteManagementTable(@RequestParam(value = "id") Integer id) {
+    public NormalSQLResponse deleteManagementTable(@PathVariable Integer id) {
         int result = managementSQLService.deleteManagementTable(id);
         NormalSQLResponse normalSQLResponse = new NormalSQLResponse();
         if (result == 1) {

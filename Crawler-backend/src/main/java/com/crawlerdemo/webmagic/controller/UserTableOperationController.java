@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * This class is used to operate the user information table from `auth_account` in vue view and `AuthAccountMap` in database.
+ */
 @RestController
 @RequestMapping("/api/v1/userTable")
 public class UserTableOperationController {
@@ -33,7 +36,10 @@ public class UserTableOperationController {
                                              String password,
                                              String email,
                                              String authorities) {
-        AuthAccountEntity authAccountEntity = new AuthAccountEntity(username, password, email, authorities);
+        //Encode the password to the BCrypt format
+        String encodedPassword = new BCryptPasswordEncoder().encode(password);
+
+        AuthAccountEntity authAccountEntity = new AuthAccountEntity(username, encodedPassword, email, authorities);
 
         int result = userService.insertUserTable(authAccountEntity);
 
@@ -54,7 +60,7 @@ public class UserTableOperationController {
      * @return NormalSQLResponse: 删除用户信息表的响应体
      */
     @DeleteMapping("/{id}")
-    public NormalSQLResponse deleteUserTable(Integer id) {
+    public NormalSQLResponse deleteUserTable(@PathVariable int id) {
         int result = userService.deleteUserTable(id);
 
         NormalSQLResponse normalSQLResponse = new NormalSQLResponse();

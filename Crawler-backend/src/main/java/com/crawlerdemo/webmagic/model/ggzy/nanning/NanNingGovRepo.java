@@ -25,8 +25,6 @@ public class NanNingGovRepo extends ResultInfoRepo<NanNingGovRepo> implements Af
 
     private Integer id;
 
-    private InfoType type = InfoType.SINGLE;
-
     private String sourceWebsite = "南宁市公共资源交易网";
 
     @ExtractBy("li/a/text()")

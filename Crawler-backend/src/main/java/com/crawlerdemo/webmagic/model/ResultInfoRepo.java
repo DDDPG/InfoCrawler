@@ -13,8 +13,6 @@ public abstract class ResultInfoRepo<T> implements Serializable {
 
     transient Integer id;
 
-    transient InfoType infoType;
-
     //The sourceWebsite in graph CrawlerManagement
     transient String sourceWebsite;
 

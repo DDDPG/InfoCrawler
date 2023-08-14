@@ -31,7 +31,7 @@ public class WebCrawler {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(WebCrawler.class, args);
         WebCrawler webCrawler = context.getBean(WebCrawler.class);
-//        webCrawler.crawlerManager.crawl("中国政府采购网_湖北省");
+//        webCrawler.crawlerManager.crawl("新疆公共资源交易网");
 //        webCrawler.mailService.mail();
 //        PasswordEncoder encoder = new BCryptPasswordEncoder();
 //        System.out.println(encoder.encode("123"));

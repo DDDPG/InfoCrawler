@@ -27,8 +27,6 @@ public class HuBeiGovRepo extends ResultInfoRepo<HuBeiGovRepo> implements AfterE
 
     private String sourceWebsite = "中国政府采购网_湖北省";
 
-    private InfoType type = InfoType.SINGLE;
-
     @ExtractBy(value = "//a/text()")
     private String title;
 

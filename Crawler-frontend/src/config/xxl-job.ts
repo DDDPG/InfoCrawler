@@ -1,0 +1,1 @@
+const VITE_XXL_JOB_ADMIN_URL = import.meta.env.VITE_XXL_JOB_ADMIN_URL

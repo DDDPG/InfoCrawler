@@ -52,8 +52,6 @@ java
 mvn clean package
 docker build -t crawler-backend .
 docker run -d -p 8080:8080 crawler-backend
-# also can run with setting params, eg:
-docker run -d -p 8080:8080 -e PARAMS="--spring.profiles.active=prod" crawler-backend
 ```
 
 ## Maintenance Step
